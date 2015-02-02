@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     var currentValue = 50
@@ -93,6 +94,14 @@ class ViewController: UIViewController {
     @IBAction func startOver() {
 //        println("clicked startOver")
         startNewGame()
+        updateLabels()
+        
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name:
+                                                kCAMediaTimingFunctionEaseOut)
+        view.layer.addAnimation(transition, forKey: nil)
     }
     
     func startNewGame(){
