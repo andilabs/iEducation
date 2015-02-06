@@ -9,25 +9,64 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController {
-
-    var itemsList: [(text:String, state:Bool)] = [
-        (text:"Walk the dog", state:false),
-        (text:"Brush teeth", state:true),
-        (text:"Learn iOS development", state:true),
-        (text:"Soccer practice", state:false),
-        (text:"Eat ice cream", state:true)
-    ]
     
+    var items: [ChecklistItem]
+    
+    required init(coder aDecoder: NSCoder) {
+        items = [ChecklistItem]()
+        
+        let row0item = ChecklistItem()
+        row0item.text = "Walk the dog"
+        row0item.checked = false
+        items.append(row0item)
+        
+        let row1item = ChecklistItem()
+        row1item.text = "Brush my teeth"
+        row1item.checked = true
+        items.append(row1item)
+        
+        let row2item = ChecklistItem()
+        row2item.text = "Learn iOS development"
+        row2item.checked = true
+        items.append(row2item)
+
+        let row3item = ChecklistItem()
+        row3item.text = "Soccer practice"
+        row3item.checked = false
+        items.append(row3item)
+        
+        let row4item = ChecklistItem()
+        row4item.text = "Eat ice cream"
+        row4item.checked = true
+        items.append(row4item)
+        
+        super.init(coder: aDecoder)
+    }
+        
+//    var row0item: ChecklistItem
+//    var row1item: ChecklistItem
+//    var row2item: ChecklistItem
+//    var row3item: ChecklistItem
+//    var row4item: ChecklistItem
 
     func configureCheckmarkForCell(cell: UITableViewCell, indexPath: NSIndexPath) {
-        println("I was called with \(indexPath.row)")
-        if itemsList[indexPath.row].state {
+
+        let item = items[indexPath.row]
+        
+//        var isChecked = false
+        
+//        if indexPath.row == 0 { isChecked = row0item.checked
+//        } else if indexPath.row == 1 { isChecked = row1item.checked
+//        } else if indexPath.row == 2 { isChecked = row2item.checked
+//        } else if indexPath.row == 3 { isChecked = row3item.checked
+//        } else if indexPath.row == 4 { isChecked = row4item.checked
+//        }
+        if item.checked {
             cell.accessoryType = .Checkmark
-        }
-        else {
+        } else {
             cell.accessoryType = .None
         }
-    
+        
     }
 
     override func viewDidLoad() {
@@ -42,22 +81,25 @@ class ChecklistViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return items.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("ChecklistItem") as UITableViewCell
-//        println(indexPath.row)
-//        println(indexPath.section)
+        
+        let item = items[indexPath.row]
         
         let label  = cell.viewWithTag(7) as UILabel
 
-        for index in 0...4 {
-            if indexPath.row == index{
-                label.text = itemsList[index].text
-            }
-        }
+        label.text = item.text
+//        if indexPath.row == 0 { label.text = row0item.text
+//        } else if indexPath.row == 1 { label.text = row1item.text
+//        } else if indexPath.row == 2 { label.text = row2item.text
+//        } else if indexPath.row == 3 { label.text = row3item.text
+//        } else if indexPath.row == 4 { label.text = row4item.text
+//        }
+        
         configureCheckmarkForCell(cell, indexPath: indexPath)
         return cell
     }
@@ -66,11 +108,15 @@ class ChecklistViewController: UITableViewController {
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath){
 
-            for index in 0...4 {
-                if indexPath.row == index {
-                    itemsList[index].state = !itemsList[index].state
-                }
-            }
+            let item = items[indexPath.row]
+            item.checked = !item.checked
+            
+//            if indexPath.row == 0 { row0item.checked = !row0item.checked
+//    } else if indexPath.row == 1 { row1item.checked = !row1item.checked
+//    } else if indexPath.row == 2 { row2item.checked = !row2item.checked
+//    } else if indexPath.row == 3 { row3item.checked = !row3item.checked
+//    } else if indexPath.row == 4 { row4item.checked = !row4item.checked
+//            }
             
             configureCheckmarkForCell(cell, indexPath: indexPath)
         }
