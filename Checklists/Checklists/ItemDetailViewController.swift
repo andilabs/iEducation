@@ -16,7 +16,7 @@ protocol ItemDetailViewControllerDelegate: class {
 
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
-    
+        
     weak var delegate: ItemDetailViewControllerDelegate?
     
     var itemToEdit: ChecklistItem?
