@@ -1,0 +1,24 @@
+The iOS Apprentice 1: Getting Started
+
+Version 3.2 (8 December 2014)
+=============================
+
+- Updated for Xcode 6.1.1.
+
+
+Version 3.1 (17 October 2014)
+=============================
+
+- Updated for Xcode 6.1 and iOS 8.1.
+
+- Loading the "SliderTrackLeft" and "SliderTrackRight" images needs "if let" 
+  because UIImage(named) is now a failable initializer. It may return nil if
+  the image could not be loaded.
+
+- The instructions for editing "Bundle display name" in Info.plist were incorrect.
+
+
+Version 3.0 (17 September 2014)
+===============================
+
+First release of the Third Edition.

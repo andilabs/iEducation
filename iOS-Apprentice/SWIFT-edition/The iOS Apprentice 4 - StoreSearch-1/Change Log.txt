@@ -1,0 +1,50 @@
+The iOS Apprentice 4: StoreSearch
+
+Version 3.2 (8 December 2014)
+=============================
+
+- Updated for Xcode 6.1.1.
+
+- UITableViewCell's textLabel and detailTextLabel properties are optional again.
+  These properties became implicitly-unwrapped optionals in Xcode 6.1, but as of
+  Xcode 6.1.1 they have changed back to true optionals and require unwrapping
+  with ! or "if let"..
+
+
+Version 3.1 (17 October 2014)
+=============================
+
+- Updated for Xcode 6.1 and iOS 8.1.
+
+- The textLabel property of UITableViewCell is no longer an optional.
+
+- NSURL(string) is a failable initializer, so the resulting optional must be
+  unwrapped to get an actual NSURL object.
+
+- String.stringWithContentsOfURL(...) is now String(contentsOfURL: ...)
+
+- NSNumber no longer automatically converts to Double when reading the JSON
+  data. You now have to write: searchResult.price = Double(price).
+
+- UIImageView extension: NSData(contentsOfURL) and UIImage(data) are both 
+  failable initializers and therefore need "if let" to unwrap them.
+
+- The type of the sender parameter in prepareForSegue(sender) is AnyObject? 
+  instead of AnyObject!.
+
+- NSNumberFormatter’s stringFromNumber() now returns an optional.
+
+- Instead of Search.Category.fromRaw(...) you need to use the new constructor
+  method Search.Category(rawValue: ...).
+
+- NSBundle's localizedInfoDictionary is an optional so you use optional chaining
+  to make sure it's not nil before looking at the CFBundleDisplayName key.
+
+- In LandscapeViewController's viewDidLoad(), the code tried to remove the
+  wrong constraints from pageControl (copy-paste error, shame on me).
+
+
+Version 3.0 (15 October 2014)
+=============================
+
+First release of the Third Edition.

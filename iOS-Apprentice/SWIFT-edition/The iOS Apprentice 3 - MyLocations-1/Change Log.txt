@@ -1,0 +1,43 @@
+The iOS Apprentice 3: MyLocations
+
+Version 3.2 (8 December 2014)
+=============================
+
+- Updated for Xcode 6.1.1.
+
+- UITableViewCell's textLabel property is an optional again. This became an 
+  implicitly-unwrapped optional in Xcode 6.1, but as of Xcode 6.1.1 it has
+  changed back to a true optional and requires unwrapping with ! or "if let".
+
+
+Version 3.1 (17 October 2014)
+=============================
+
+- Updated for Xcode 6.1 and iOS 8.1.
+
+- toRaw() on enumerations is now called rawValue.
+
+- NSError.errorWithDomain(...) changed to NSError(domain: ...)
+
+- The type of the sender parameter in prepareForSegue(sender) is AnyObject? 
+  instead of AnyObject!.
+  
+- To set the text on a table view cell you now write cell.textLabel.text instead
+  of cell.textLabel!.text -- the textLabel property is no longer an optional.
+
+- Add a short explanation of failable initializers.
+  
+- UIImage(named) is a failable initializer, returning an optional that may be
+  nil. Loading the HUD image now requires "if let" to unwrap this optional.
+  
+- When creating the NSManagedObjectModel, the "as NSManagedObjectModel!" cast
+  is no longer needed.
+
+- The name property from NSFetchedResultsSectionInfo is now an optional, so to
+  use it you write: return sectionInfo.name!.uppercaseString
+
+
+Version 3.0 (8 October 2014)
+============================
+
+First release of the Third Edition.

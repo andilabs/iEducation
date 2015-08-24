@@ -64,7 +64,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         tableView.rowHeight = 44
         
-        // it the optional is not nil code goes inside
+        // if the optional is not nil code goes inside
         if let item = itemToEdit {
             title = "Edit Item"
             textField.text = item.text

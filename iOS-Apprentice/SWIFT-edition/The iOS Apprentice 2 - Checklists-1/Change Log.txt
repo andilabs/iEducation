@@ -1,0 +1,40 @@
+The iOS Apprentice 2: Checklists
+
+Version 3.2 (8 December 2014)
+=============================
+
+- Updated for Xcode 6.1.1.
+
+- UITableViewCell's textLabel and imageView properties are optionals again.
+  These properties became implicitly-unwrapped optionals in Xcode 6.1, but as of
+  Xcode 6.1.1 they have changed back to true optionals and require unwrapping.
+  You now have to write cell.textLabel!.text instead of cell.textLabel.text, and
+  cell.imageView!.image instead of cell.imageView.image.
+
+
+Version 3.1 (17 October 2014)
+=============================
+
+- Updated for Xcode 6.1 and iOS 8.1.
+  
+- The type of the sender parameter in prepareForSegue(sender) is AnyObject? 
+  instead of AnyObject!.
+
+- NSData(contentsOfFile) is now a failable initializer, so loadChecklists()
+  uses "if let" to check that the new NSData object is not nil.
+
+- Moved the instructions for adding tableView.rowHeight = 44 to viewDidLoad() 
+  to earlier in the tutorial. This gets rid of the silly "Detected a case where
+  constraints ambiguously suggest a height of zero for a table view cell’s
+  content view" warning.
+
+- To set the text on a table view cell you now write cell.textLabel.text instead
+  of cell.textLabel!.text -- the textLabel property is no longer an optional.
+  Likewise for cell.imageView. However, cell.detailTextLabel still requires 
+  unwrapping.
+
+
+Version 3.0 (1 October 2014)
+============================
+
+First release of the Third Edition.
